@@ -1,7 +1,8 @@
 {
-    "Bg": "6",
     "x": "23",
     "y": "61",
     "scale": "100",
+    "voice": "cn",
+    "Bg": "6",
     "panelVisible": false
 }
