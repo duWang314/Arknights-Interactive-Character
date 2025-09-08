@@ -81,6 +81,20 @@
             <input id="slider-scale" type="range" min="50" max="150" value="100">
             <span id="val-scale">100%</span>
         </div>
+        <!-- 语言/配音 单选区域 -->
+        <br>
+        <div class="group" id="voice-select" style="min-width:180px;">
+            <label>Voice:</label>
+            <label style="display:flex;align-items:center;gap:2px;cursor:pointer;">
+                <input type="radio" name="voice-lang" value="cn" checked style="cursor:pointer;">CN
+            </label>
+            <label style="display:flex;align-items:center;gap:2px;cursor:pointer;">
+                <input type="radio" name="voice-lang" value="jp" style="cursor:pointer;">JP
+            </label>
+            <label style="display:flex;align-items:center;gap:2px;cursor:pointer;">
+                <input type="radio" name="voice-lang" value="en" style="cursor:pointer;">EN
+            </label>
+        </div>
         <div class="group scene-arrows">
             <button id="scene-prev" title="上一场景">◀</button>
             <span id="scene-label" style="padding:0 4px;">1 / 17</span>
