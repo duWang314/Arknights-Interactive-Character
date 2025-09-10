@@ -16,7 +16,6 @@
         #control-panel {
             position: absolute;
             left: 50%;
-            bottom: 14px;
             transform: translateX(-50%);
             display: flex;
             gap: 12px;
@@ -54,7 +53,21 @@
         #control-panel input[type=range] { width: 120px; cursor: pointer; }
         #control-panel .scene-arrows { display: flex; }
         #control-panel .scene-arrows button { padding: 6px 8px; min-width: 34px; }
-        #show-panel-btn { position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%); z-index: 9998; background: rgba(30,30,40,0.35); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.25); color:#fff; padding:6px 12px; border-radius: 20px; cursor:pointer; font-size:12px; display:none; }
+        #show-panel-btn {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 9998;
+            background: rgba(30,30,40,0.35);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.25);
+            color:#fff;
+            padding:6px 12px;
+            border-radius:20px;
+            cursor:pointer;
+            font-size:12px;
+            display:none;
+        }
         #customAlert {
             position: fixed;
             top: 40%;
@@ -101,16 +114,18 @@
         <div class="group" id="voice-select" style="min-width:180px;">
             <label>Voice:</label>
             <label style="display:flex;align-items:center;gap:2px;cursor:pointer;">
-                <input type="radio" name="voice-lang" value="cn" checked style="cursor:pointer;">CN
+                <input type="radio" name="voice-lang" value="cn" checked style="cursor:pointer;">cn
             </label>
             <label style="display:flex;align-items:center;gap:2px;cursor:pointer;">
-                <input type="radio" name="voice-lang" value="jp" style="cursor:pointer;">JP
+                <input type="radio" name="voice-lang" value="jp" style="cursor:pointer;">jp
             </label>
             <label style="display:flex;align-items:center;gap:2px;cursor:pointer;">
-                <input type="radio" name="voice-lang" value="en" style="cursor:pointer;">EN
+                <input type="radio" name="voice-lang" value="en" style="cursor:pointer;">en
             </label>
         </div>
-        <div class="group scene-arrows">
+        <!-- 展示位置指示 (仅显示) -->
+        <div class="group" id="place-indicator" style="min-width:110px;">UI control: top</div>
+        <div class="group scene-arrows" style="min-width: 150px;">
             <button id="scene-prev" title="上一场景">◀</button>
             <span id="scene-label" style="padding:0 4px;">1 / 17</span>
             <button id="scene-next" title="下一场景">▶</button>

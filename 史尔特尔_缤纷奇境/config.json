@@ -1,8 +1,11 @@
 {
-    "x": "30",
+    "x": "38",
     "y": "23",
     "scale": "113",
-    "voice": "jp",
+    "voice": "cn",
+    "UI control":"top",
     "Bg": "4",
-    "panelVisible": false
+    "panelVisible": true,
+    "提醒_UI control": "UI control的值只能改为top或bottom, 如果改为bottom, 则UI控件将被Windows任务栏挡住, 不隐藏任务栏则无法看见。",
+    "提醒_panelVisible": "panelVisible的值可以改为true或false。"
 }
