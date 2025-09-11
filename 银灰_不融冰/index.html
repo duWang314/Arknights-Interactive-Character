@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>银灰_不融冰</title>
+    <link rel="stylesheet" href="./spine-player.css">
+    <script src="./spine-player.js"></script>
+    <style>
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; font-family: system-ui, sans-serif; }
+        #stage { position: absolute; inset: 0; overflow: hidden; touch-action: none; }
+        #background, #player-container { position: absolute; top: -10%; left: -15%; width: 130%; height: 130%; }
+        #background { background-image: url('./Bg/Bg_1.webp'); background-size: cover; background-position: center bottom; background-repeat: no-repeat; }
+        #player-container { background-size: 60%; background-position: 60% 5%; background-repeat: no-repeat; }
+
+        /* 控制面板样式 */
+        #control-panel {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            padding: 10px 16px;
+            background: rgba(30,30,40,0.35);
+            backdrop-filter: blur(10px) saturate(150%);
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 14px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+            color: #fff;
+            font-size: 12px;
+            user-select: none;
+            z-index: 9999;
+        }
+        #control-panel.hidden { display: none; }
+        #control-panel button {
+            background: linear-gradient(145deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05));
+            border: 1px solid rgba(255,255,255,0.3);
+            color: #fff;
+            padding: 6px 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: background .2s, transform .2s;
+        }
+        #control-panel button:hover { background: rgba(255,255,255,0.28); }
+        #control-panel button:active { transform: translateY(1px); }
+        #control-panel .group { display: flex; align-items: center; gap: 6px; }
+        #control-panel label { opacity: .8; }
+        #control-panel input[type=range] { width: 120px; cursor: pointer; }
+        #control-panel .scene-arrows { display: flex; }
+        #control-panel .scene-arrows button { padding: 6px 8px; min-width: 34px; }
+        #show-panel-btn {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 9998;
+            background: rgba(30,30,40,0.35);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.25);
+            color:#fff;
+            padding:6px 12px;
+            border-radius:20px;
+            cursor:pointer;
+            font-size:12px;
+            display:none;
+        }
+        #customAlert {
+            position: fixed;
+            top: 40%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #f44336;
+            color: white;
+            padding: 16px 24px;
+            border-radius: 4px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            display: none;
+            z-index: 9999;
+            white-space: pre-line; /* 加入此语句使\n生效 */
+        }
+    </style>
+</head>
+<body>
+    <div id="customAlert">这是一个自动消失的警告！</div>
+    <div id="stage">
+        <div id="background"></div>
+        <div id="player-container"></div>
+    </div>
+    <audio id="background-music" src="./Bgm/Bgm_1.mp3" loop></audio>
+    <audio id="voice-player"></audio>
+    <!-- 控制面板 -->
+    <div id="control-panel">
+        <div class="group" style="min-width:165px;">
+            <label>X:</label>
+            <input id="slider-x" type="range" min="0" max="100" value="50">
+            <span id="val-x">50</span>
+        </div>
+        <div class="group" style="min-width:165px;">
+            <label>Y:</label>
+            <input id="slider-y" type="range" min="0" max="100" value="50">
+            <span id="val-y">50</span>
+        </div>
+        <div class="group" style="min-width:165px;">
+            <label>Scale:</label>
+            <input id="slider-scale" type="range" min="50" max="150" value="100">
+            <span id="val-scale">100%</span>
+        </div>
+        <!-- 语言/配音 单选区域 -->
+        <br>
+        <div class="group" id="voice-select" style="min-width:180px;">
+            <label>Voice:</label>
+            <label style="display:flex;align-items:center;gap:2px;cursor:pointer;">
+                <input type="radio" name="voice-lang" value="cn" checked style="cursor:pointer;">cn
+            </label>
+            <label style="display:flex;align-items:center;gap:2px;cursor:pointer;">
+                <input type="radio" name="voice-lang" value="jp" style="cursor:pointer;">jp
+            </label>
+            <label style="display:flex;align-items:center;gap:2px;cursor:pointer;">
+                <input type="radio" name="voice-lang" value="en" style="cursor:pointer;">en
+            </label>
+        </div>
+        <!-- 展示位置指示 (仅显示) -->
+        <div class="group" id="place-indicator" style="min-width:110px;">UI control: top</div>
+        <div class="group scene-arrows" style="min-width: 150px;">
+            <button id="scene-prev" title="上一场景">◀</button>
+            <span id="scene-label" style="padding:0 4px;">1 / 17</span>
+            <button id="scene-next" title="下一场景">▶</button>
+        </div>
+        <button id="btn-start" title="开始语音">Start</button>
+        <button id="btn-refresh" title="刷新动画">Refresh</button>
+        <button id="btn-save" title="保存配置">Save</button>
+        <button id="btn-hide" title="隐藏面板">✕</button>
+    </div>
+    <button id="show-panel-btn">显示控制</button>
+    <script src="./app.js"></script>
+</body>
+</html>
