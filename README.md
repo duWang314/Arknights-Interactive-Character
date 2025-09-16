@@ -70,5 +70,5 @@ new spine.SpinePlayer("player", {
 
 *   感谢 [鹰角网络](https://ak.hypergryph.com/) 美术组的优秀作品，立绘精美，声优大牌。（bushi
 *   感谢 [prts.wiki](https://prts.wiki/) 多年用爱发电，将解包获取的游戏资源文件无偿分享到网站上。
-*   感谢 [isHurry](https://github.com/isHarryh) 大佬做的自动化解包[脚本](https://github.com/isHarryh/Ark-Unpacker)。
+*   感谢 [Harry Huang](https://github.com/isHarryh) 大佬做的自动化解包[脚本](https://github.com/isHarryh/Ark-Unpacker)。
 *   感谢 [Esoteric Software](https://esotericsoftware.com/) 开发了强大的 Spine 动画工具及其 Web 播放器。
