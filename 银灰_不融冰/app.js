@@ -92,6 +92,17 @@ new spine.SpinePlayer("player-container", {
     alpha: true,
     backgroundColor: "#00000000",
     showControls: false,
+
+    viewport: {
+        x: 10,
+        y: 560,
+        width: 110,
+        height: 110,
+        padLeft: "675%",
+        padRight: "675%",
+        padTop: "675%",
+        padBottom: "675%"
+    },
     
     success: function (player) {
         console.log("Spine assets loaded successfully.");
