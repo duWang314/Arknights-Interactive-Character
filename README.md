@@ -5,12 +5,9 @@
 本项目可以直接在本地运行，也可轻松部署到任何静态网页服务器。
 
 ## 👁️ 效果预览（静态）
-![image](https://github.com/duWang314/Arknights-Interactive-Character/tree/main/image/preview/preview_令_崖高梦远.png)
-![image](https://github.com/duWang314/Arknights-Interactive-Character/tree/main/image/preview/preview_银灰_不融冰.png)
-![image](https://github.com/duWang314/Arknights-Interactive-Character/tree/main/image/preview/preview_死芒_夏卉.png)
-![image](https://github.com/duWang314/Arknights-Interactive-Character/tree/main/image/preview/preview_史尔特尔_缤纷奇境.png)
-![image](https://github.com/duWang314/Arknights-Interactive-Character/tree/main/image/preview/preview_水月_夏日餮宴.png)
-![image](https://github.com/duWang314/Arknights-Interactive-Character/tree/main/image/preview/preview_W_恍惚.png)
+<img width="1919" height="1079" alt="preview_令_崖高梦远" src="https://github.com/user-attachments/assets/4e03acd7-b535-4642-9d14-517f9609656e" />
+<img width="1919" height="1079" alt="preview_银灰_不融冰" src="https://github.com/user-attachments/assets/31c98532-7508-45d8-8f74-8292cd444698" />
+<img width="1919" height="1079" alt="preview_死芒_夏卉" src="https://github.com/user-attachments/assets/ad37825e-02c7-4d22-bbda-22d5f32f1a00" />
 
 ## ✨ 主要功能
 
