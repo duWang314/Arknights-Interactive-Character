@@ -75,6 +75,21 @@ new spine.SpinePlayer("player", {
 *   **JavaScript (ES6)**
 *   **Spine Runtimes for web (v3.8)**
 
+## 🔗创意工坊链接
+
+*   **令_崖高梦远**:
+    *   https://steamcommunity.com/sharedfiles/filedetails/?id=3570156349
+*   **银灰_不融冰**:
+    *   https://steamcommunity.com/sharedfiles/filedetails/?id=3569204392
+*   **死芒_夏卉**:
+    *   https://steamcommunity.com/sharedfiles/filedetails/?id=3568470654
+*   **水月_夏日餮宴**:
+    *   https://steamcommunity.com/sharedfiles/filedetails/?id=3566064566
+*   **史尔特尔_缤纷奇境**:
+    *   https://steamcommunity.com/sharedfiles/filedetails/?id=3563840882
+*   **W_恍惚**:
+    *   https://steamcommunity.com/sharedfiles/filedetails/?id=3563835238
+
 ## 致谢
 
 *   感谢 [鹰角网络](https://ak.hypergryph.com/) 美术组的优秀作品，立绘精美，声优大牌。（bushi
