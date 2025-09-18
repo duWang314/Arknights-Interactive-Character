@@ -3,8 +3,9 @@
 !/test/start server.bat
 !/test/spine-player.js
 !/test/spine-player.css
-!/test/remove_newlines.c
-!/test/remove_newlines.exe
+!/test/utils
+/test/utils/b64encode.exe
 
 /傀影_焦点
 /凯尔希_残余
+/克洛丝_星月漂流记
