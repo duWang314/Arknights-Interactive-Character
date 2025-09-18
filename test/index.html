@@ -11,8 +11,20 @@
 
     <script>
         new spine.SpinePlayer("player-container", {
-        skelUrl: "./<刚刚抓到的skel文件>",
-        atlasUrl: "./<刚刚抓到的atlas文件>",
+        skelUrl: "./<文件名>.skel",
+        atlasUrl: "./<文件名>.atlas",
+        // 请注意，如果文件名中出现'#'字符，在路径引用中需要将其换成"%23"；同时更改图片文件名，删去'#'及其后所有字符（包括png后缀）。
+        // 否则服务器启动失效，而base64编码内嵌不受影响。
+        // eg:
+        // 如果atlas文件名为"dyn_illust_char_124_kroos_sale#14.atlas"，skel文件名为"dyn_illust_char_124_kroos_sale#14.skel"，
+        // 则代码中：
+        // altasUrl: "./dyn_illust_char_124_kroos_sale%2314.atlas",
+        // skelUrl: "./dyn_illust_char_124_kroos_sale%2314.skel",
+        // 同时将原名为：
+        // "dyn_illust_char_124_kroos_sale#14.png"
+        // 的图片改名为：
+        // "dyn_illust_char_124_kroos_sale"
+
         animation: "Idle",
         });
     </script>
