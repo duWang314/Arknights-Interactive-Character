@@ -4,6 +4,14 @@
 
 本项目可以直接在本地运行，也可轻松部署到任何静态网页服务器。
 
+## 👁️ 效果预览（静态）
+![image](https://github.com/duWang314/Arknights-Interactive-Character/tree/main/image/preview/preview_令_崖高梦远.png)
+![image](https://github.com/duWang314/Arknights-Interactive-Character/tree/main/image/preview/preview_银灰_不融冰.png)
+![image](https://github.com/duWang314/Arknights-Interactive-Character/tree/main/image/preview/preview_死芒_夏卉.png)
+![image](https://github.com/duWang314/Arknights-Interactive-Character/tree/main/image/preview/preview_史尔特尔_缤纷奇境.png)
+![image](https://github.com/duWang314/Arknights-Interactive-Character/tree/main/image/preview/preview_水月_夏日餮宴.png)
+![image](https://github.com/duWang314/Arknights-Interactive-Character/tree/main/image/preview/preview_W_恍惚.png)
+
 ## ✨ 主要功能
 
 *   **Spine 动画播放**: 基于 Spine Runtimes 3.8 版本，这也是明日方舟当前使用的版本。
