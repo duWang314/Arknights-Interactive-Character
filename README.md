@@ -42,7 +42,7 @@
     *   **随机语音**: 交互语音可从多个文件中随机选择一个播放。
     *   **防打扰机制**: 快速连续点击时，不会打断正在播放的语音，避免声音混乱。
 *   **零依赖本地运行**: 无需复杂的环境配置，双击`index.html`即可运行。推荐使用Wallpaper Engine运行，以确保能够读取到配置文件，还能享受更高的清晰度。在浏览器运行时，使用"Ctrl" + "-"可以显著提高页面清晰度，但相应的电脑资源的占用也会变高。
-*   **UI控件和配置本地存储**: 网页自带UI控件，可随你所欲切换方舟不同主题的背景和背景音乐，还可以调整角色的位置和大小。选一组你最喜欢的配置，手动将其写入`config.json`中吧！
+*   **UI控件和配置本地存储**: 网页自带UI控件，可随您所欲切换方舟不同主题的背景和背景音乐，还可以调整角色的位置和大小。选一组您最喜欢的配置，手动将其写入`config.json`中吧！
 
 ## ❗使用说明及注意事项
 
@@ -60,14 +60,14 @@
     - 找一个有动态立绘且prts上上传了TA的动态立绘的角色，比如[W](https://prts.wiki/w/W)的“恍惚”。
     - F12（Fn+F12）打开开发者工具，并找到**网络**。
     - 点击右侧**动态立绘**，此时可以监听到**一个后缀为skel的纯文本文件**、**一个后缀为atlas的非纯文本文件**、**一张或是多张显然是wife碎片的png图片**、**一张显然是背景的png图片**，双击就可以下载，将这三样文件保存到本地。
-    - 至此你完成了网络抓包形式的资源获取，它相对简单，但只能获取较早期发布的动态立绘。要想获取当期的动态立绘，请参考**资源获取 - 法二：自己解包**。
+    - 至此您完成了网络抓包形式的资源获取，它相对简单，但只能获取较早期发布的动态立绘。要想获取当期的动态立绘，请参考**资源获取 - 法二：自己解包**。
 
 2.  **资源获取 - 法二：自己解包**:
     - 前往[明日方舟中国服官网](https://ak.hypergryph.com/downloads/android_lastest)下载 apk 安装包。
     - [Harry Huang](https://github.com/isHarryh) 大佬使用 Python 制作并开源了一个自动化解包[脚本](https://github.com/isHarryh/Ark-Unpacker)，参考他仓库下的 README 文件，合并两个 Android 文件夹获取完整资源。
     - 动态立绘的目录在 Android -> arts -> dynchars 路径下，将 dynchars 这个文件夹与 release 中 ArkUnpacker 这个可执行文件放在同一个文件夹下，为了方便“一键执行”，此时当前文件夹中只能有 dynchars 这一个文件夹。
-    - 双击 ArkUnpacker，选择第一个选项“一键执行”。等待数分钟得到解包结果，请确保你的设备硬盘和 CPU 的性能达标。你需要在很多张图片里找到立绘的背景图片。这里的解包结果我们只要立绘中的背景，wife 碎片我们将采取另一种方式解包得到，因为使用这种方式解出来的 wife 碎片会更“亮”一些，导致你的人物看起来像幽灵。
-    - 再次来到 ArkUnpacker 的命令行主界面，这次我们选择第五个选项“自定义Spine模型导出”，这里你就需要手动复制解包文件夹和输出文件夹的路径了。经过这次解包，我们就能获取无损的 wife 碎片。
+    - 双击 ArkUnpacker，选择第一个选项“一键执行”。等待数分钟得到解包结果，请确保您的设备硬盘和 CPU 的性能达标。您需要在很多张图片里找到立绘的背景图片。这里的解包结果我们只要立绘中的背景，wife 碎片我们将采取另一种方式解包得到，因为使用这种方式解出来的 wife 碎片会更“亮”一些，导致您的人物看起来像幽灵。不过，不是所有立绘都能找到背景。有些立绘的背景图片需要特殊处理，包括但不限于合并两张图片、擦去部分边角、调整某部分位置，等等。
+    - 再次来到 ArkUnpacker 的命令行主界面，这次我们选择第五个选项“自定义Spine模型导出”，这里您就需要手动复制解包文件夹和输出文件夹的路径了。经过这次解包，我们就能获取无损的 wife 碎片。
     - 不过，解包出来的一系列文件夹的名称对我们来说会有些陌生，我总结了一些规律，可以根据文件夹名称的后半部分来快速识别是哪个干员。
     
     ```txt
@@ -81,7 +81,7 @@
     
     各个部分的含义：
     (1): character 003 号，含义不是很明确。
-    (2): kalts，表示这个干员的名字，不过凯尔希的完整英文名应该是Kal'tsit。虽然此处你有很大概率可以猜出这就是凯尔希，但更多文件夹此部分不容易看出。
+    (2): kalts，表示这个干员的名字，不过凯尔希的完整英文名应该是Kal'tsit。虽然此处您有很大概率可以猜出这就是凯尔希，但更多文件夹此部分不容易看出。
     (3): boc#6，表示这个皮肤属于“斗争血脉”（bloodline of combat）系列，且所属的具体时装组为“斗争血脉/VI”，此时再去查看碎片，不难猜出这就是 凯尔希_残余 的动态立绘。我认为通过这一部分判断是最有把握的。以下给出皮肤系列总结。
     
     动态皮肤系列总结：
@@ -142,9 +142,9 @@ new spine.SpinePlayer("player", {
 ```
 4.  **壁纸运行**:
     - **浏览器运行的问题：** 编写完了上述代码，保存然后双击`index.html`打开网页，您可能发现页面中只有一个不停旋转的 spine 加载图标。当您按下 F12 查看控制台输出信息时就会发现，刚刚 html 中的 js 脚本获取 skel, atlas, png 文件的过程其实是 **失败** 的，这是因为浏览器通常会有安全策略，不允许 js 脚本读取本地文件。
-    - **Wallpaper Engine中运行：** 不修改代码，在Wallpaper Engine中尝试运行（打开壁纸 -> 打开离线壁纸（动态） -> 找到`index.html`）就会发现可以运行，动态小人正常地显示了出来。这是因为Wallpaper Engine毕竟不是浏览器，只是有一个Chromium内核，所以Wallpaper Engine并没有常见浏览器的安全策略。这也是为什么你上网冲浪时电脑通常没那么容易中病毒，而在Wallpaper Engine中订阅网页类壁纸却要小心慎重的原因之一。
-    - **浏览器运行的解决方案 - 服务器启动：** 浏览器的安全策略读取不允许 js 脚本读取本地文件，但 js 发送 http 请求接收网络文件则是可以的。你可以将你的 skel, atlas, png 文件托管到网络平台，然后在 js 脚本中以网页链接的形式引用这些文件。或者，不修改代码，使用本地服务器诸如`python -m http.server 8080`的方式启动也是完全可以的。您可以参考 test 文件夹下的 `start server.bat`，里面提供了一键启动服务器并使用 edge 浏览器访问的快捷通道。
-    - **浏览器运行的解决方案 - 内嵌资源：** 在[官方文档（旧）](https://zh.esotericsoftware.com/blog/Embedding-assets-with-Spine-Web-Player)和[官方文档（新）](https://zh.esotericsoftware.com/spine-player)中都提到了如何将原生资源内嵌到 js 脚本中，具体到 Windows 平台，你可以用 Windows 自带的 certutil (certificate util) 来进行编码：`certutil -encode example.png png.txt`对于 `png.txt` ，你还需要去除首位行中像“-----BEGIN CERTIFICATE-----”这样的段，以及文件中 **所有** 的换行符。去除换行符的操作如果用 VS Code 中"Change All Occurrences"的功能，可能会导致 VS Code 卡顿。这里推荐使用 test/utils 下的 C 语言工具 b64encode ，输入`b64encode example.png`即可一步到位，快速将 Mb 级别的文件完成编码，将仅一行的结果写入`example.png_output`文本文件中。
+    - **Wallpaper Engine中运行：** 不修改代码，在Wallpaper Engine中尝试运行（打开壁纸 -> 打开离线壁纸（动态） -> 找到`index.html`）就会发现可以运行，动态小人正常地显示了出来。这是因为Wallpaper Engine毕竟不是浏览器，只是有一个Chromium内核，所以Wallpaper Engine并没有常见浏览器的安全策略。这也是为什么您上网冲浪时电脑通常没那么容易中病毒，而在Wallpaper Engine中订阅网页类壁纸却要小心慎重的原因之一。
+    - **浏览器运行的解决方案 - 服务器启动：** 浏览器的安全策略读取不允许 js 脚本读取本地文件，但 js 发送 http 请求接收网络文件则是可以的。您可以将您的 skel, atlas, png 文件托管到网络平台，然后在 js 脚本中以网页链接的形式引用这些文件。或者，不修改代码，使用本地服务器诸如`python -m http.server 8080`的方式启动也是完全可以的。您可以参考 test 文件夹下的 `start server.bat`，里面提供了一键启动服务器并使用 edge 浏览器访问的快捷通道。
+    - **浏览器运行的解决方案 - 内嵌资源：** 在[官方文档（旧）](https://zh.esotericsoftware.com/blog/Embedding-assets-with-Spine-Web-Player)和[官方文档（新）](https://zh.esotericsoftware.com/spine-player)中都提到了如何将原生资源内嵌到 js 脚本中，具体到 Windows 平台，您可以用 Windows 自带的 certutil (certificate util) 来进行编码：`certutil -encode example.png png.txt`对于 `png.txt` ，您还需要去除首位行中像“-----BEGIN CERTIFICATE-----”这样的段，以及文件中 **所有** 的换行符。去除换行符的操作如果用 VS Code 中"Change All Occurrences"的功能，可能会导致 VS Code 卡顿。这里推荐使用 test/utils 下的 C 语言工具 b64encode ，输入`b64encode example.png`即可一步到位，快速将 Mb 级别的文件完成编码，将仅一行的结果写入`example.png_output`文本文件中。
 
 ## 🔧 技术栈
 
