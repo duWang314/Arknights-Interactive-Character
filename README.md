@@ -68,11 +68,64 @@
     - 动态立绘的目录在 Android -> arts -> dynchars 路径下，将 dynchars 这个文件夹与 release 中 ArkUnpacker 这个可执行文件放在同一个文件夹下，为了方便“一键执行”，此时当前文件夹中只能有 dynchars 这一个文件夹。
     - 双击 ArkUnpacker，选择第一个选项“一键执行”。等待数分钟得到解包结果，请确保你的设备硬盘和 CPU 的性能达标。你需要在很多张图片里找到立绘的背景图片。这里的解包结果我们只要立绘中的背景，wife 碎片我们将采取另一种方式解包得到，因为使用这种方式解出来的 wife 碎片会更“亮”一些，导致你的人物看起来像幽灵。
     - 再次来到 ArkUnpacker 的命令行主界面，这次我们选择第五个选项“自定义Spine模型导出”，这里你就需要手动复制解包文件夹和输出文件夹的路径了。经过这次解包，我们就能获取无损的 wife 碎片。
-
+    - 不过，解包出来的一系列文件夹的名称对我们来说会有些陌生，我总结了一些规律，可以根据文件夹名称的后半部分来快速识别是哪个干员。
+    
+    ```txt
+    文件夹名称大致如下：
+    char_003_kalts_boc#6
+    
+    将其分为三个部分：
+    char_003 -> (1)
+    kalts -> (2)
+    boc#6 -> (3)
+    
+    各个部分的含义：
+    (1): character 003 号，含义不是很明确。
+    (2): kalts，表示这个干员的名字，不过凯尔希的完整英文名应该是Kal'tsit。虽然此处你有很大概率可以猜出这就是凯尔希，但更多文件夹此部分不容易看出。
+    (3): boc#6，表示这个皮肤属于“斗争血脉”（bloodline of combat）系列，且所属的具体时装组为“斗争血脉/VI”，此时再去查看碎片，不难猜出这就是 凯尔希_残余 的动态立绘。我认为通过这一部分判断是最有把握的。以下给出皮肤系列总结。
+    
+    动态皮肤系列总结：
+    sale - 忒斯特收藏
+    epoque - 时代
+    nian - 0011制造
+    summer - 珊瑚海岸
+    witch - 巫异盛宴
+    wild - 生命之地
+    boc - 斗争血脉
+    ambience synesthesia - 音律联觉
+    ncg - 合作款
+    iteration - 命途迭代
+    sightseer - 错位巡礼
+    cfa - 中国电影资料馆
+    ncg - 国家地理
+    
+    其他系列（截至2025.9.20未发布动态皮肤）：
+    whirlwind - 0011飙系列
+    yun - 0011韵系列
+    marthe - 玛尔特
+    winter - 寒武纪系列
+    snow - 冰原信使
+    sweep - 雷神开拓者
+    striker - 雷神推进者
+    kitchen - 罗德厨房
+    ghost - 缠梦古堡
+    race - 啸风
+    shining - 闪耀阶梯
+    game - 成就之星
+    unveiling - 待予花冠
+    kfc - 肯德基
+    it - i.t
+    taiko - 太鼓之达人
+    wwf - WWF
+    ```
+    
+    
+    
 3.  **编写代码**:
+    
     - 需要先找到**3.8**版本的`spine web player`依赖文件，这次就只需要`spine-player.js`和`spine-player.css`两个文件就够了。
-    - 将这两个依赖文件和刚刚抓包抓到的四个文件放入同一个文件夹，再新建一个`index.html`文件。
-    - html中编写如下代码：
+    - 将这两个依赖文件和刚刚获取的资源文件放入同一个文件夹，再新建一个`index.html`文件。
+    - html 中编写如下代码：
 ```html
 <script src="./spine-player.js"></script>
 <link rel="stylesheet" href="./spine-player.css">
@@ -88,10 +141,10 @@ new spine.SpinePlayer("player", {
 </script>
 ```
 4.  **壁纸运行**:
-    - **浏览器运行的问题：**编写完了上述代码，保存然后双击`index.html`打开网页，您可能发现页面中只有一个不停旋转的 spine 加载图标。当您按下 F12 查看控制台输出信息时就会发现，刚刚 html 中的 js 脚本获取 skel, atlas, png 文件的过程其实是**失败**的，这是因为浏览器通常会有安全策略，不允许 js 脚本读取本地文件。
-    - **Wallpaper Engine中运行：**不修改代码，在Wallpaper Engine中尝试运行（打开壁纸 -> 打开离线壁纸（动态） -> 找到`index.html`）就会发现可以运行，动态小人正常地显示了出来。这是因为Wallpaper Engine毕竟不是浏览器，只是有一个Chromium内核，所以Wallpaper Engine并没有常见浏览器的安全策略。这也是为什么你上网冲浪时电脑通常没那么容易中病毒，而在Wallpaper Engine中订阅网页类壁纸却要小心慎重的原因之一。
-    - **浏览器运行的解决方案 - 服务器启动：**浏览器的安全策略读取不允许 js 脚本读取本地文件，但 js 发送 http 请求接收网络文件则是可以的。你可以将你的 skel, atlas, png 文件托管到网络平台，然后在 js 脚本中以网页链接的形式引用这些文件。或者，不修改代码，使用本地服务器诸如`python -m http.server 8080`的方式启动也是完全可以的。您可以参考 test 文件夹下的 `start server.bat`，里面提供了一键启动服务器并使用 edge 浏览器访问的快捷通道。
-    - **浏览器运行的解决方案 - 内嵌资源：**在[官方文档（旧）](https://zh.esotericsoftware.com/blog/Embedding-assets-with-Spine-Web-Player)和[官方文档（新）](https://zh.esotericsoftware.com/spine-player)中都提到了如何将原生资源内嵌到 js 脚本中，具体到 Windows 平台
+    - **浏览器运行的问题：** 编写完了上述代码，保存然后双击`index.html`打开网页，您可能发现页面中只有一个不停旋转的 spine 加载图标。当您按下 F12 查看控制台输出信息时就会发现，刚刚 html 中的 js 脚本获取 skel, atlas, png 文件的过程其实是 **失败** 的，这是因为浏览器通常会有安全策略，不允许 js 脚本读取本地文件。
+    - **Wallpaper Engine中运行：** 不修改代码，在Wallpaper Engine中尝试运行（打开壁纸 -> 打开离线壁纸（动态） -> 找到`index.html`）就会发现可以运行，动态小人正常地显示了出来。这是因为Wallpaper Engine毕竟不是浏览器，只是有一个Chromium内核，所以Wallpaper Engine并没有常见浏览器的安全策略。这也是为什么你上网冲浪时电脑通常没那么容易中病毒，而在Wallpaper Engine中订阅网页类壁纸却要小心慎重的原因之一。
+    - **浏览器运行的解决方案 - 服务器启动：** 浏览器的安全策略读取不允许 js 脚本读取本地文件，但 js 发送 http 请求接收网络文件则是可以的。你可以将你的 skel, atlas, png 文件托管到网络平台，然后在 js 脚本中以网页链接的形式引用这些文件。或者，不修改代码，使用本地服务器诸如`python -m http.server 8080`的方式启动也是完全可以的。您可以参考 test 文件夹下的 `start server.bat`，里面提供了一键启动服务器并使用 edge 浏览器访问的快捷通道。
+    - **浏览器运行的解决方案 - 内嵌资源：** 在[官方文档（旧）](https://zh.esotericsoftware.com/blog/Embedding-assets-with-Spine-Web-Player)和[官方文档（新）](https://zh.esotericsoftware.com/spine-player)中都提到了如何将原生资源内嵌到 js 脚本中，具体到 Windows 平台，你可以用 Windows 自带的 certutil (certificate util) 来进行编码：`certutil -encode example.png png.txt`对于 `png.txt` ，你还需要去除首位行中像“-----BEGIN CERTIFICATE-----”这样的段，以及文件中 **所有** 的换行符。去除换行符的操作如果用 VS Code 中"Change All Occurrences"的功能，可能会导致 VS Code 卡顿。这里推荐使用 test/utils 下的 C 语言工具 b64encode ，输入`b64encode example.png`即可一步到位，快速将 Mb 级别的文件完成编码，将仅一行的结果写入`example.png_output`文本文件中。
 
 ## 🔧 技术栈
 
